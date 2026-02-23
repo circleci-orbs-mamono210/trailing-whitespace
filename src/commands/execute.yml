@@ -1,0 +1,7 @@
+---
+description: "Execute trailing whitespace check for all tracked files."
+
+steps:
+  - run:
+      name: Execute trailing whitespace check
+      command: <<include(scripts/trailing-whitespace.sh)>>

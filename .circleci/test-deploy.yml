@@ -1,0 +1,40 @@
+---
+version: 2.1
+
+orbs:
+  trailing-whitespace: orbss/trailing-whitespace@dev:<<pipeline.git.revision>>
+  orb-tools: circleci/orb-tools@11.1
+
+filters: &filters
+  tags:
+    only: /.*/
+
+jobs:
+  trailing-whitespace:
+    executor: trailing-whitespace/default
+    steps:
+      - checkout
+      - trailing-whitespace/execute
+
+workflows:
+  test-deploy:
+    jobs:
+      - trailing-whitespace:
+          filters: *filters
+
+      - orb-tools/pack:
+          filters: *filters
+
+      - orb-tools/publish:
+          orb-name: orbss/trailing-whitespace
+          vcs-type: << pipeline.project.type >>
+          pub-type: production
+          requires:
+            - orb-tools/pack
+            - trailing-whitespace
+          context: <publishing-context>
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+$/

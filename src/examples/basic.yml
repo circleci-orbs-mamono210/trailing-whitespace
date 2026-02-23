@@ -1,0 +1,16 @@
+---
+description: "Basic usage example"
+usage:
+  version: 2.1
+  orbs:
+    trailing-whitespace: orbss/trailing-whitespace@x.y.z
+  jobs:
+    trailing-whitespace:
+      executor: trailing-whitespace/default
+      steps:
+        - checkout
+        - trailing-whitespace/execute
+  workflows:
+    check:
+      jobs:
+        - trailing-whitespace

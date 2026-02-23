@@ -1,0 +1,10 @@
+---
+version: 2.1
+
+description: >
+  Detect trailing whitespace in text files in a repository.
+  Designed for CI usage. Fails the build when violations are found.
+
+display:
+  home_url: "https://github.com/circleci-orbs-mamono210/trailing-whitespace"
+  source_url: "https://github.com/circleci-orbs-mamono210/trailing-whitespace"

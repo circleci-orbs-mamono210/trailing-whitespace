@@ -1,0 +1,14 @@
+---
+description: "Default executor for trailing whitespace checks"
+docker:
+  - image: <<parameters.image>>
+resource_class: <<parameters.resource_class>>
+
+parameters:
+  image:
+    type: string
+    default: "ghcr.io/docker-images-mamono210/circleci-executors/trailing-whitespace:latest"
+  resource_class:
+    type: enum
+    default: "small"
+    enum: ["small", "medium", "medium+", "large"]
