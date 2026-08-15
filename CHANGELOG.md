@@ -9,6 +9,13 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.9] - 2026-08-15
+
+### Changed
+
+* Removed the duplicate `SC1009` entry from the ShellCheck `exclude`
+  configuration.
+
 ## [0.0.8] - 2026-08-15
 
 ### Fixed

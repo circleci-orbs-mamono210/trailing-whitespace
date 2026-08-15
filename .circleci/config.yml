@@ -20,7 +20,7 @@ workflows:
       - orb-tools/review:
           filters: *filters
       - shellcheck/check:
-          exclude: SC1009, SC1009
+          exclude: SC1009
           filters: *filters
       - orb-tools/publish:
           orb-name: orbss/trailing-whitespace
