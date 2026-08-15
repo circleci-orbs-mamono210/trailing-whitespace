@@ -9,6 +9,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.12] - 2026-08-15
+
+### Changed
+
+- Removed the unused `run_check()` helper function from the trailing
+  whitespace regression test script.
+- Kept the existing explicit exit status handling in each regression
+  test case unchanged.
+
 ## [0.0.11] - 2026-08-15
 
 ### Added
@@ -110,3 +119,4 @@ and this project adheres to
   successful check.
 - Replaced the `git ls-files | xargs | grep` pipeline with `git grep` to
   distinguish matches, no matches, and command errors reliably.
+

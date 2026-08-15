@@ -20,21 +20,6 @@ create_repo() {
   git init -q "$repo_dir"
 }
 
-run_check() {
-  local repo_dir=$1
-  local output_file=$2
-
-  set +e
-  (
-    cd "$repo_dir"
-    bash "$CHECK_SCRIPT"
-  ) >"$output_file" 2>&1
-  local status=$?
-  set -e
-
-  return "$status"
-}
-
 #
 # Clean LF tracked files should pass.
 #
