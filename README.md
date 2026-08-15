@@ -27,7 +27,7 @@ Add the Orb to your CircleCI configuration:
 version: 2.1
 
 orbs:
-  trailing-whitespace: orbss/trailing-whitespace@0.0.8
+  trailing-whitespace: orbss/trailing-whitespace@1.0.0
 ```
 
 Create a job using the default executor and the `execute` command:
@@ -36,7 +36,7 @@ Create a job using the default executor and the `execute` command:
 version: 2.1
 
 orbs:
-  trailing-whitespace: orbss/trailing-whitespace@0.0.8
+  trailing-whitespace: orbss/trailing-whitespace@1.0.0
 
 jobs:
   trailing-whitespace:

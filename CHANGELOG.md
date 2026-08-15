@@ -9,6 +9,30 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-08-15
+
+### Changed
+
+- Released the first stable version of the Trailing Whitespace Orb.
+- Updated README usage examples to use `orbss/trailing-whitespace@1.0.0`.
+- Established the current Orb interface and trailing whitespace detection
+  behavior as the stable `1.x` API.
+
+### Supported
+
+- Detects trailing spaces and tabs in LF-terminated files.
+- Detects trailing spaces and tabs in CRLF-terminated files.
+- Checks Git-tracked files only.
+- Ignores untracked files.
+- Ignores binary files.
+- Propagates errors when the trailing whitespace check itself cannot be
+  executed.
+- Provides regression tests for LF, CRLF, binary files, and command
+  execution errors.
+- Provides a negative integration test verifying tracked and untracked file
+  behavior.
+- Provides a default executor based on `cimg/python:3.14`.
+
 ## [0.0.12] - 2026-08-15
 
 ### Changed
