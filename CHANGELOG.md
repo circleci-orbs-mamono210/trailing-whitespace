@@ -9,6 +9,21 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-08-15
+
+### Added
+
+- Added an MIT License file.
+- Added documentation for Orb usage, supported line endings, and trailing
+  whitespace detection behavior.
+- Added documentation explaining that only Git-tracked files are checked.
+
+### Changed
+
+- Expanded the README with setup and usage examples.
+- Documented the requirement to run `checkout` before the `execute` command.
+- Updated the license badge to reference this repository's `LICENSE` file.
+
 ## [0.0.5] - 2026-08-15
 
 ### Added
