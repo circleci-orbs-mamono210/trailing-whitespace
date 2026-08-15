@@ -1,13 +1,16 @@
 ---
 description: "Default executor for trailing whitespace checks"
+
 docker:
   - image: <<parameters.image>>
+
 resource_class: <<parameters.resource_class>>
 
 parameters:
   image:
     type: string
-    default: "ghcr.io/docker-images-mamono210/circleci-executors/trailing-whitespace:latest"
+    default: "cimg/python:3.14"
+
   resource_class:
     type: enum
     default: "small"

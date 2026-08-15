@@ -9,6 +9,16 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-08-15
+
+### Changed
+
+- Changed the default executor image from the custom trailing-whitespace
+  image to `cimg/python:3.14`.
+- Standardized the default executor with other Orb projects.
+- Removed the default runtime dependency on the custom
+  trailing-whitespace container image.
+
 ## [0.0.6] - 2026-08-15
 
 ### Added
