@@ -106,6 +106,43 @@ fi
 echo "PASS: LF trailing whitespace is detected"
 
 #
+# LF trailing tab should exit with status 1.
+#
+lf_tab_repo="${TEST_ROOT}/lf-tab"
+create_repo "$lf_tab_repo"
+
+printf 'line with trailing tab\t\n' \
+  > "${lf_tab_repo}/bad-tab.txt"
+
+(
+  cd "$lf_tab_repo"
+  git add -- bad-tab.txt
+)
+
+set +e
+(
+  cd "$lf_tab_repo"
+  bash "$CHECK_SCRIPT"
+) >"${TEST_ROOT}/lf-tab.log" 2>&1
+status=$?
+set -e
+
+if [ "$status" -ne 1 ]; then
+  cat "${TEST_ROOT}/lf-tab.log" >&2
+  fail \
+    "LF trailing tab should exit with status 1, got $status"
+fi
+
+if ! grep -Fq \
+  'bad-tab.txt:1:' \
+  "${TEST_ROOT}/lf-tab.log"; then
+  cat "${TEST_ROOT}/lf-tab.log" >&2
+  fail "LF trailing tab file was not reported"
+fi
+
+echo "PASS: LF trailing tab is detected"
+
+#
 # Clean CRLF tracked files should pass.
 #
 crlf_clean_repo="${TEST_ROOT}/crlf-clean"
