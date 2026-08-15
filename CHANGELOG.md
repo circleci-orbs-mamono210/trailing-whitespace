@@ -9,6 +9,18 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-08-15
+
+### Added
+
+- Added a negative integration test for tracked files containing trailing
+  whitespace.
+- Added coverage verifying that untracked files are excluded from trailing
+  whitespace checks.
+- Added verification that a file begins failing the check after it becomes
+  tracked.
+- Added the negative integration test as a production publish requirement.
+
 ## [0.0.4] - 2026-08-15
 
 ### Added

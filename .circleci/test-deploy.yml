@@ -25,6 +25,15 @@ jobs:
           name: Test trailing whitespace exit status handling
           command: bash tests/test-trailing-whitespace.sh
 
+  negative-integration-test:
+    executor: trailing-whitespace/default
+    steps:
+      - checkout
+
+      - run:
+          name: Run negative integration test
+          command: bash tests/test-negative-integration.sh
+
 workflows:
   test-deploy:
     jobs:
@@ -32,6 +41,9 @@ workflows:
           filters: *filters
 
       - regression-tests:
+          filters: *filters
+
+      - negative-integration-test:
           filters: *filters
 
       - orb-tools/pack:
@@ -43,6 +55,7 @@ workflows:
           pub-type: production
           requires:
             - orb-tools/pack
+            - negative-integration-test
             - regression-tests
             - trailing-whitespace
           context: CIRCLECI_ORBS
