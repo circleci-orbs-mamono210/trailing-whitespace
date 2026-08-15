@@ -9,6 +9,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.0.10] - 2026-08-15
+
+### Added
+
+* Added a regression test verifying that Git-tracked binary files are
+  excluded from trailing whitespace checks.
+* Added coverage for binary files containing data that could otherwise
+  match the trailing whitespace pattern.
+
 ## [0.0.9] - 2026-08-15
 
 ### Changed

@@ -220,6 +220,36 @@ fi
 echo "PASS: multiline CRLF trailing whitespace is detected"
 
 #
+# Binary tracked files should be ignored.
+#
+binary_repo="${TEST_ROOT}/binary"
+create_repo "$binary_repo"
+
+printf 'binary\0line with trailing whitespace \n' \
+  > "${binary_repo}/binary.dat"
+
+(
+  cd "$binary_repo"
+  git add -- binary.dat
+)
+
+set +e
+(
+  cd "$binary_repo"
+  bash "$CHECK_SCRIPT"
+) >"${TEST_ROOT}/binary.log" 2>&1
+status=$?
+set -e
+
+if [ "$status" -ne 0 ]; then
+  cat "${TEST_ROOT}/binary.log" >&2
+  fail \
+    "binary tracked files should be ignored, got exit status $status"
+fi
+
+echo "PASS: binary tracked files are ignored"
+
+#
 # Command execution errors must not be treated as success.
 #
 error_dir="${TEST_ROOT}/not-a-repository"
