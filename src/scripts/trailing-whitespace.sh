@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-if git grep -nI -E '[[:blank:]]+$' --; then
+if git grep \
+  -nI \
+  -E \
+  -e '[[:blank:]]+$' \
+  -e $'[[:blank:]]+\r$' \
+  --; then
   echo
   echo "***** Lines containing trailing whitespace *****"
   echo
