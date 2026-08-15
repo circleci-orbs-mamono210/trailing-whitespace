@@ -16,10 +16,22 @@ jobs:
       - checkout
       - trailing-whitespace/execute
 
+  regression-tests:
+    executor: trailing-whitespace/default
+    steps:
+      - checkout
+
+      - run:
+          name: Test trailing whitespace exit status handling
+          command: bash tests/test-trailing-whitespace.sh
+
 workflows:
   test-deploy:
     jobs:
       - trailing-whitespace:
+          filters: *filters
+
+      - regression-tests:
           filters: *filters
 
       - orb-tools/pack:
@@ -31,6 +43,7 @@ workflows:
           pub-type: production
           requires:
             - orb-tools/pack
+            - regression-tests
             - trailing-whitespace
           context: CIRCLECI_ORBS
           filters:

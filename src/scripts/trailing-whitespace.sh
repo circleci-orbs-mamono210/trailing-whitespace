@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 set -e
 
-if git ls-files -z | xargs -0 grep -nIH -E '[[:blank:]]+$'; then
+if git grep -nI -E '[[:blank:]]+$' --; then
   echo
   echo "***** Lines containing trailing whitespace *****"
   echo
   echo "Failed."
   exit 1
+else
+  status=$?
 fi
+
+if [ "$status" -eq 1 ]; then
+  exit 0
+fi
+
+echo "Failed to execute trailing whitespace check." >&2
+exit "$status"
